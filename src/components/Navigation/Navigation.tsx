@@ -7,6 +7,7 @@ export const Navigation: React.FC=()=>{
                     <NavLink to='/'>Home</NavLink>
                 </li>
                 <li>
+                    <NavLink to ='contacts'>Contacts</NavLink>
                 </li>
             </ul>
         </nav>
