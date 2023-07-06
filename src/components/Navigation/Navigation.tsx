@@ -1,15 +1,18 @@
-import {NavLink} from 'react-router-dom'
+
+import { StyledLink, StyledList } from './Navigation.styled'
 export const Navigation: React.FC=()=>{
+    const token = false;
+
     return (
         <nav>
-            <ul>
+            <StyledList>
                 <li>
-                    <NavLink to='/'>Home</NavLink>
+                    <StyledLink to='/'>Home</StyledLink>
                 </li>
                 <li>
-                    <NavLink to ='contacts'>Contacts</NavLink>
+                  { token && <StyledLink to ='contacts'>Contacts</StyledLink>}
                 </li>
-            </ul>
+            </StyledList>
         </nav>
     )
 }
