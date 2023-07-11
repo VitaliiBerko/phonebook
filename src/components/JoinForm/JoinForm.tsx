@@ -1,17 +1,18 @@
 
 import { nanoid } from 'nanoid';
 
-// import { joinUser } from 'redux/auth/auth.operation';
+import { joinUser } from '../../redux/auth/auth.operations';
 // import { selectIsLoading } from 'redux/auth/auth.selector';
 // import Loader from '../Loader/Loader';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { IUser } from '../../types/userTypes';
 
 
 
 export const JoinForm: React.FC = () => {
   const dispatch = useDispatch();
-//   const isLoading = useSelector(selectIsLoading);
+  // const isLoading = useSelector(selectIsLoading);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -51,9 +52,9 @@ export const JoinForm: React.FC = () => {
     const userEmail = email.value;
     const userPassword = password.value;
 
-    // dispatch(
-    //   joinUser({ name: userName, email: userEmail, password: userPassword })
-    // );
+    dispatch(joinUser({ name: userName, email: userEmail, password: userPassword }) as any);
+    
+    setName('');
     setName('');
     setEmail('');
     setPassword('');

@@ -8,13 +8,14 @@ import {
     PURGE,
     REGISTER,
   } from 'redux-persist';
-import { contactsReducer } from "./contacts/contactsSlice";
+import { contactsReducer } from "./contacts/contacts.slice";
+import { authReducer } from "./auth/auth.slice";
 
 export const store = configureStore({
     reducer: {
         contacts: contactsReducer,
         // filter: 
-        // auth: 
+        auth: authReducer
     },
 
     devTools: true,

@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit'
-import { IContact } from '../../types/contatctsType';
-import { fetchContacts } from './operations';
+import { IContact } from '../../types/contatctsTypes';
+import { fetchContacts } from './contacts.operations';
 import Notiflix from 'notiflix';
 
 interface IContactsState {

@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
-import { IContact } from "../../types/contatctsType";
+import { IContact } from "../../types/contatctsTypes";
 import { ContactForm } from "../../components/ContactForm/ContactForm";
 import { ContactList } from "../../components/ContactList/ContactList";
 import { Filter } from "../../components/Filter/Filter";
