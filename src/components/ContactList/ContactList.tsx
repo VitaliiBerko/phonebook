@@ -1,4 +1,4 @@
-import { IContact } from "../../types/contact"
+import { IContact } from "../../types/contatctsTypes"
 import { ContactListItem } from "../ContactListItem/ContactListItem";
 
 interface IProps {

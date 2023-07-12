@@ -1,4 +1,4 @@
-import { IContact } from "../../types/contact";
+import { IContact } from "../../types/contatctsTypes";
 import { Button } from "../Button/Button";
 import { Item } from "./ContactListItem.styled";
 
