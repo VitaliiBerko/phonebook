@@ -5,13 +5,15 @@ import { joinUser } from '../../redux/auth/auth.operations';
 // import { selectIsLoading } from 'redux/auth/auth.selector';
 // import Loader from '../Loader/Loader';
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { IUser } from '../../types/userTypes';
+
+import { useAppDispatch } from '../../redux/hooks/hooks';
+
 
 
 
 export const JoinForm: React.FC = () => {
-  const dispatch = useDispatch();
+  
+  const dispatch = useAppDispatch()
   // const isLoading = useSelector(selectIsLoading);
 
   const [name, setName] = useState('');
@@ -25,7 +27,8 @@ export const JoinForm: React.FC = () => {
     const { value, name } = evt.currentTarget;
     switch (name) {
       case 'name':
-        setName(value);
+        // setName(value);
+        setName(value)
         break;
 
       case 'email':
@@ -52,7 +55,15 @@ export const JoinForm: React.FC = () => {
     const userEmail = email.value;
     const userPassword = password.value;
 
-    dispatch(joinUser({ name: userName, email: userEmail, password: userPassword }) as any);
+    // const payload: IUser ={
+    //   name: userName as string,
+    //   email: (userEmail as string).toLowerCase(),
+    //   password: userPassword as string
+
+    // }
+
+    dispatch(joinUser({name: userName, email: userEmail, password: userPassword}));
+    // dispatch(joinUser(payload))
     
     setName('');
     setName('');

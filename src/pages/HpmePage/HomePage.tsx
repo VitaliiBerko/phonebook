@@ -1,6 +1,7 @@
 import { WrapperHomePage } from "./HomePage.styled";
 
 const HomePage: React.FC =()=> {
+    
     return (
         <WrapperHomePage>
             <h2>Hello! I am your phonebok.</h2>
