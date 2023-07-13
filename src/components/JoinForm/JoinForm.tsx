@@ -1,40 +1,34 @@
+import { nanoid } from "nanoid";
 
-import { nanoid } from 'nanoid';
+import { joinUser } from "../../redux/auth/auth.operations";
+import { selectIsLoading } from "../../redux/auth/auth.selectors";
+import Loader from "../Loader/Loader";
+import React, { useState } from "react";
 
-import { joinUser } from '../../redux/auth/auth.operations';
-// import { selectIsLoading } from 'redux/auth/auth.selector';
-// import Loader from '../Loader/Loader';
-import React, { useState } from 'react';
-
-import { useAppDispatch } from '../../redux/hooks/hooks';
-
-
-
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 
 export const JoinForm: React.FC = () => {
-  
-  const dispatch = useAppDispatch()
-  // const isLoading = useSelector(selectIsLoading);
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(selectIsLoading);
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const nameInputId = nanoid();
   const emailInputId = nanoid();
   const passwordInputId = nanoid();
 
-  const handleChange = (evt: React.ChangeEvent<HTMLInputElement> ) => {
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = evt.currentTarget;
     switch (name) {
-      case 'name':
-        // setName(value);
-        setName(value)
+      case "name":
+        setName(value);
         break;
 
-      case 'email':
+      case "email":
         setEmail(value);
         break;
-      case 'password':
+      case "password":
         setPassword(value);
         break;
 
@@ -47,35 +41,31 @@ export const JoinForm: React.FC = () => {
     evt.preventDefault();
     const form = evt.target as HTMLFormElement;
     const { name, email, password } = form.elements as typeof form.elements & {
-        name: HTMLInputElement;
-        email: HTMLInputElement;
-        password: HTMLInputElement
-    }
+      name: HTMLInputElement;
+      email: HTMLInputElement;
+      password: HTMLInputElement;
+    };
     const userName = name.value;
     const userEmail = email.value;
     const userPassword = password.value;
 
-    // const payload: IUser ={
-    //   name: userName as string,
-    //   email: (userEmail as string).toLowerCase(),
-    //   password: userPassword as string
+    dispatch(
+      joinUser({ name: userName, email: userEmail, password: userPassword })
+    );
 
-    // }
-
-    dispatch(joinUser({name: userName, email: userEmail, password: userPassword}));
-    // dispatch(joinUser(payload))
-    
-    setName('');
-    setName('');
-    setEmail('');
-    setPassword('');
+    setName("");
+    setName("");
+    setEmail("");
+    setPassword("");
   };
 
-
-//  return isLoading   ? (<Loader/>) : 
-return  (  <form onSubmit={handleOnSubmit} 
-// className={s.form}
->
+  return isLoading ? (
+    <Loader />
+  ) : (
+    <form
+      onSubmit={handleOnSubmit}
+      // className={s.form}
+    >
       <label htmlFor={nameInputId}>Name</label>
       <input
         // className={s.input}
@@ -110,12 +100,12 @@ return  (  <form onSubmit={handleOnSubmit}
         name="password"
         // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Password must be digits and have more then 7 characters and can contain spaces, dashes, parentheses and can start with +"
-        placeholder='Your password must be 7 characters or longer.'
+        placeholder="Your password must be 7 characters or longer."
         required
         value={password}
         onChange={handleChange}
       />
-     
+
       <button className="btn btn-primary" type="submit">
         Join
       </button>
