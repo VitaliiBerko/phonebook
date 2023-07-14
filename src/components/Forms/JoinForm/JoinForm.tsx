@@ -1,11 +1,13 @@
 import { nanoid } from "nanoid";
 
-import { joinUser } from "../../redux/auth/auth.operations";
-import { selectIsLoading } from "../../redux/auth/auth.selectors";
-import Loader from "../Loader/Loader";
+import { joinUser } from "../../../redux/auth/auth.operations";
+import { selectIsLoading } from "../../../redux/auth/auth.selectors";
+import Loader from "../../Loader/Loader";
 import React, { useState } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
+import { Form } from "../Form.styled";
+import { Button } from "../../Button/Button";
 
 export const JoinForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -62,7 +64,7 @@ export const JoinForm: React.FC = () => {
   return isLoading ? (
     <Loader />
   ) : (
-    <form
+    <Form
       onSubmit={handleOnSubmit}
       // className={s.form}
     >
@@ -106,9 +108,9 @@ export const JoinForm: React.FC = () => {
         onChange={handleChange}
       />
 
-      <button className="btn btn-primary" type="submit">
+      <Button type="submit" variant="addBtn">
         Join
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };

@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useState } from "react";
 import { nanoid } from "nanoid";
 import { IContact } from "../../types/contatctsTypes";
-import { ContactForm } from "../../components/ContactForm/ContactForm";
+import { ContactForm } from "../../components/Forms/ContactForm/ContactForm";
 import { ContactList } from "../../components/ContactList/ContactList";
 import { Filter } from "../../components/Filter/Filter";
-import { WrapperContPage } from "./ContactsPage.styled";
+import { MainTitle, Title, WrapperPage } from "../../styles/commom.styled";
 
 const ContactsPage: FC = () => {
   const [contacts, setContacts] = useState<IContact[]>(() => {
@@ -39,13 +39,13 @@ const ContactsPage: FC = () => {
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter));
 
   return (
-    <WrapperContPage>
-      <h1 className="title">Phonebook</h1>
+    <WrapperPage>
+      <MainTitle className="title">Phonebook</MainTitle>
       <ContactForm onAddContact={handleAddContact} contacts={contacts} />
-      <h2 className="title">Contacts</h2>
+      <Title className="title">Contacts</Title>
       <Filter value={filter} onChangeFilter={handleFilterChange} />
       <ContactList contacts={filteredContacts} onClickDelete={handleDeleteContact} />
-    </WrapperContPage>
+    </WrapperPage>
   );
 };
 

@@ -49,10 +49,12 @@ const authSlice = createSlice({
         state.error = payload;
         Notiflix.Notify.failure("Something went wrong. Please, try again");
       })
+
+
       .addCase(logIn.pending, state=> {
         state.isLoading = true;
       })
-      .addCase(logIn.fulfilled, (state, {payload})=>{
+      .addCase(logIn.fulfilled, (state, {payload} : PayloadAction<IUserResponse>)=>{
         state.isLoading = false;
         state.user = payload.user;
         state.token = payload.token;
@@ -64,8 +66,10 @@ const authSlice = createSlice({
         state.error = payload;
         Notiflix.Notify.failure("Ooops... Innocent password or email");
       } )
+
+
       .addCase(refreshUser.pending, state=>{state.isLoading=true})
-      .addCase(refreshUser.fulfilled, (state, {payload})=>{
+      .addCase(refreshUser.fulfilled, (state, {payload} : PayloadAction<IUserWithoutPasswor>)=>{
         state.isLoading=false;
         state.user = payload;
         state.isLoggedIn=true;

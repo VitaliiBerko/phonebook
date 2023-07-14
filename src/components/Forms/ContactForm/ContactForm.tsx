@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Notiflix from "notiflix";
-import { IContact } from "../../types/contatctsTypes";
-import { Form } from "./ContactForm.styled";
-import { Button } from "../Button/Button";
+import { IContact } from "../../../types/contatctsTypes";
+import { Form } from "../Form.styled";
+import { Button } from "../../Button/Button";
 
 interface IProps {
   onAddContact: (data: Pick<IContact, "name" | "number">) => void;

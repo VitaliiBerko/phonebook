@@ -1,11 +1,13 @@
-import { LoginForm } from "../../components/LoginForm/LoginForm";
+import { LoginForm } from "../../components/Forms/LoginForm/LoginForm";
+import { Title, WrapperPage } from "../../styles/commom.styled";
 
-const JoinPage: React.FC =()=>{
-return(
-    
-    <LoginForm/>
-)
-}
+const LoginPage: React.FC = () => {
+  return (
+    <WrapperPage>
+        <Title>Please, login!</Title>
+      <LoginForm />
+    </WrapperPage>
+  );
+};
 
-export default JoinPage;
-
+export default LoginPage;

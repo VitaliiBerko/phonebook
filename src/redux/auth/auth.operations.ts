@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { privateApi, setAuthHeader } from "../../http/http";
 import { IUser } from "../../types/userTypes";
+import { RootState } from "../store";
 // import { selectAuthToken } from "./auth.selector";
 // import { toast } from "react-toastify";
 
