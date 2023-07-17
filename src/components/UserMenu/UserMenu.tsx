@@ -3,36 +3,34 @@
 // import { logOut } from "redux/auth/auth.slice";
 // import styles from '../common.module.css'
 
+import { selectName } from "../../redux/auth/auth.selectors";
+import { logOut } from "../../redux/auth/auth.slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { Button } from "../Button/Button";
 import { Wrapper } from "./UserMenu.styled";
 
 export const UserMenu: React.FC = () => {
-  // const dispath = useDispatch();
-  // const name = useSelector(selectName);
+  const dispath = useAppDispatch();
+  const name = useAppSelector(selectName);
 
-  const handlLogOut =()=>{
-    //   dispath(logOut())
-  }
+  const handlLogOut = () => {
+    dispath(logOut());    
+  };
 
   return (
     <Wrapper>
       <h2>
         Welcome,
-        {/* {name} */}!
+        {name}!
       </h2>
       <img
         src="https://img.icons8.com/arcade/64/null/rick-sanchez.png"
         alt="user"
       />
-      {/* <button        
-        type="button"
-        onClick={handlLogOut}
-      >
+
+      <Button type="button" onClick={handlLogOut} variant="logOutBtn">
         Log out
-      </button> */}
-      <Button type="button" onClick={handlLogOut} variant="logOutBtn" >Log out</Button>
-
-
+      </Button>
     </Wrapper>
   );
 };

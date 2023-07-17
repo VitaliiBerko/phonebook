@@ -6,11 +6,12 @@ interface IProps {
   variant: "delBtn" | "addBtn" | "logOutBtn";
   type: "button" | "submit";
   onClick?(): void;
+  
 }
 
-export const Button: FC<IProps> = ({ children, variant, type }) => {
+export const Button: FC<IProps> = ({ children, variant, type, onClick}) => {
   return (
-    <button type={type} className={css[variant]}>
+    <button  onClick={onClick} type={type} className={css[variant]}>
       {children}
     </button>
   );
