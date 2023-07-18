@@ -5,11 +5,10 @@ import { IContact } from "../../../types/contatctsTypes";
 import { Form } from "../Form.styled";
 import { Button } from "../../Button/Button";
 import { addContact } from "../../../redux/contacts/contacts.operations";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { selectContacts } from "../../../redux/contacts/contacts.selectors";
+import { useAppDispatch} from "../../../redux/hooks/hooks";
 
-interface IProps {
-  onAddContact: (data: Pick<IContact, "name" | "number">) => void;
+
+interface IProps {  
   contacts: IContact[];
 }
 
@@ -17,8 +16,8 @@ Notiflix.Notify.init({
   position: "center-top",
 });
 
-export const ContactForm: React.FC<IProps> = () => {
-  const contacts = useAppSelector(selectContacts)
+export const ContactForm: React.FC<IProps> = ({contacts}) => {
+  // const contacts = useAppSelector(selectContacts)
   const dispatch = useAppDispatch();
 
   const [name, setName] = useState("");

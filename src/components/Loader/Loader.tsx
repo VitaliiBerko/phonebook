@@ -13,7 +13,7 @@ const Loader: React.FC = () => {
         wrapperStyle={{
           justifyContent: 'center',
           position: 'absolute',
-          top: '25%',
+          top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
         }}

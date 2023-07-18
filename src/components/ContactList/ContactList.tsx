@@ -2,18 +2,17 @@ import { IContact } from "../../types/contatctsTypes"
 import { ContactListItem } from "../ContactListItem/ContactListItem";
 
 interface IProps {
-    contacts: IContact[];
-    onClickDelete: (id: string)=> void;
+    contacts: IContact[];    
 }
 
-export const ContactList: React.FC<IProps> =({contacts, onClickDelete})=>{
-return (
+export const ContactList: React.FC<IProps> =({contacts})=>{
+
+  return (
     <ul>
     {contacts.map((contact) => (
       <ContactListItem
         key={contact.id}        
-        contact ={contact}
-        onClickDelete={onClickDelete}
+        contact ={contact}       
       />
     ))}
   </ul>
