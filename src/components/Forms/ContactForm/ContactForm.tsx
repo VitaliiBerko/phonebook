@@ -17,8 +17,7 @@ Notiflix.Notify.init({
 });
 
 export const ContactForm: React.FC<IProps> = ({contacts}) => {
-  // const contacts = useAppSelector(selectContacts)
-  const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");

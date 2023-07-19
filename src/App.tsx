@@ -7,7 +7,7 @@ import { selectIsRefreshing } from "./redux/auth/auth.selectors";
 import { refreshUser } from "./redux/auth/auth.operations";
 import Loader from "./components/Loader/Loader";
 import { PublicRoute } from "./components/AuthRouts/PublicRoute";
-import { PrivateRoute } from "./components/AuthRouts/PrivatRout";
+import { PrivateRoute } from "./components/AuthRouts/PrivateRout";
 const HomePage = lazy(() => import("./pages/HpmePage/HomePage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
 const JoinPage = lazy(() => import("./pages/JoinPage/JoinPage"));
@@ -28,7 +28,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          
+
           <Route path="" element={<PublicRoute />}>
             <Route path="/register" element={<JoinPage />} />
             <Route path="/login" element={<LoginPage />} />
