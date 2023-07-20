@@ -1,4 +1,4 @@
-import{s as i,j as e}from"./index-88d798f5.js";const s=i.div`
+import{s as i,j as e}from"./index-392aa3f1.js";const s=i.div`
 margin: auto;
 padding: 24px;
 text-align: center;
