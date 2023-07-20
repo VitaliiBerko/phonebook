@@ -19,6 +19,7 @@ export const ContactForm: React.FC = () => {
 
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+
   const nameInputId = nanoid();
   const numberInputId = nanoid();
  

@@ -6,8 +6,9 @@ import Loader from "../../Loader/Loader";
 import React, { useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { Form } from "../Form.styled";
+import { ButtonEye, Form, SvgEye } from "../Form.styled";
 import { Button } from "../../Button/Button";
+import icon from "../../../images/Icons/icons.sprite.svg";
 
 export const JoinForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -16,6 +17,7 @@ export const JoinForm: React.FC = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPass, setIsPass] = useState(true);
   const nameInputId = nanoid();
   const emailInputId = nanoid();
   const passwordInputId = nanoid();
@@ -91,8 +93,7 @@ export const JoinForm: React.FC = () => {
       <label htmlFor={passwordInputId}>Password</label>
       <input
         id={passwordInputId}
-        type="password"
-        //   type={isPass ? 'password' : 'text'}
+        type={isPass ? "password" : "text"}
         name="password"
         // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
         title="Password must be digits and have more then 7 characters and can contain spaces, dashes, parentheses and can start with +"
@@ -101,6 +102,21 @@ export const JoinForm: React.FC = () => {
         value={password}
         onChange={handleChange}
       />
+      <ButtonEye
+        type="button"
+        onClick={() => (isPass ? setIsPass(false) : setIsPass(true))}
+      >
+        {isPass ? (
+          <SvgEye>
+            <use xlinkHref={`${icon}#closed-eye`}></use>
+          </SvgEye>
+        ) : (
+          <SvgEye>
+            {" "}
+            <use xlinkHref={`${icon}#opened-eye`}></use>
+          </SvgEye>
+        )}
+      </ButtonEye>
 
       <Button type="submit" variant="addBtn">
         Join
