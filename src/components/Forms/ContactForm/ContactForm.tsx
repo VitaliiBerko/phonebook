@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Notiflix from "notiflix";
-import { IContact } from "../../../types/contatctsTypes";
 import { Form } from "../Form.styled";
 import { Button } from "../../Button/Button";
 import { addContact } from "../../../redux/contacts/contacts.operations";
-import { useAppDispatch} from "../../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector} from "../../../redux/hooks/hooks";
+import { selectContacts } from "../../../redux/contacts/contacts.selectors";
 
 
-interface IProps {  
-  contacts: IContact[];
-}
 
 Notiflix.Notify.init({
   position: "center-top",
 });
 
-export const ContactForm: React.FC<IProps> = ({contacts}) => {
+export const ContactForm: React.FC = () => {
+  const contacts = useAppSelector(selectContacts);
     const dispatch = useAppDispatch();
 
   const [name, setName] = useState("");

@@ -25,6 +25,10 @@ const initialState : IAuthState = {
   error: null
 };
 
+Notiflix.Notify.init({
+  position: 'center-center',
+});
+
 
 
 const authSlice = createSlice({
@@ -95,6 +99,3 @@ export const authReducer = persistReducer(
   authSlice.reducer
 );
 
-Notiflix.Notify.init({
-  position: 'center-center',
-});

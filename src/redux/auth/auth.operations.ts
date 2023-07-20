@@ -1,6 +1,6 @@
 import {createAsyncThunk } from "@reduxjs/toolkit";
 import { privateApi, setAuthHeader } from "../../http/http";
-import { IUser, IUserResponse } from "../../types/userTypes";
+import { IUser, IUserResponse, IUserWithoutPasswor } from "../../types/userTypes";
 import { RootState } from "../store";
 
 
@@ -48,7 +48,7 @@ export const refreshUser= createAsyncThunk(
     }
     try {
       setAuthHeader(persistToken);
-      const { data } = await privateApi.get<IUserResponse>("/users/current");
+      const { data } = await privateApi.get<IUserWithoutPasswor>("/users/current");
       return data;
     } catch (error) {
       let message: string;

@@ -64,13 +64,9 @@ export const JoinForm: React.FC = () => {
   return isLoading ? (
     <Loader />
   ) : (
-    <Form
-      onSubmit={handleOnSubmit}
-      // className={s.form}
-    >
+    <Form onSubmit={handleOnSubmit}>
       <label htmlFor={nameInputId}>Name</label>
       <input
-        // className={s.input}
         id={nameInputId}
         type="text"
         name="name"
@@ -83,7 +79,6 @@ export const JoinForm: React.FC = () => {
 
       <label htmlFor={emailInputId}>Email</label>
       <input
-        // className={s.input}
         id={emailInputId}
         type="email"
         name="email"
@@ -95,7 +90,6 @@ export const JoinForm: React.FC = () => {
       />
       <label htmlFor={passwordInputId}>Password</label>
       <input
-        // className={s.input}
         id={passwordInputId}
         type="password"
         //   type={isPass ? 'password' : 'text'}

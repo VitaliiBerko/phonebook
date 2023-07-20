@@ -36,7 +36,7 @@ const ContactsPage: FC = () => {
     <WrapperPage>
       <MainTitle className="title">Phonebook</MainTitle>
       {isLoading && !error && <Loader />}
-      <ContactForm contacts={contacts} />
+      <ContactForm />
       <Title className="title">Contacts</Title>
       <Filter value={filter} onChangeFilter={handleFilterChange} />
       {!!contacts && <ContactList contacts={filteredContacts} />}
