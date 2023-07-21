@@ -1,4 +1,4 @@
-import{s as e}from"./index-a2d1c768.js";let a=(i=21)=>crypto.getRandomValues(new Uint8Array(i)).reduce((o,t)=>(t&=63,t<36?o+=t.toString(36):t<62?o+=(t-26).toString(36).toUpperCase():t>62?o+="-":o+="_",o),"");const r=e.form`
+import{s as t}from"./index-da424ec1.js";let a=(n=21)=>crypto.getRandomValues(new Uint8Array(n)).reduce((e,o)=>(o&=63,o<36?e+=o.toString(36):o<62?e+=(o-26).toString(36).toUpperCase():o>62?e+="-":e+="_",e),"");const s=t.form`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -8,24 +8,27 @@ import{s as e}from"./index-a2d1c768.js";let a=(i=21)=>crypto.getRandomValues(new
   width: 500px;
   border: 2px solid black;
   border-radius: 4px;
-`,s=e.button`
+`,p=t.button`
   position: absolute;
   top: 67%;
   left: 90%;  
-`,p=e.svg`
+`,r=t.button`
+  position: absolute;
+  top: 56.5%;
+  left: 90%;  
+`,l=t.svg`
   width: 18px;
   height: 20px;
-
   fill: grey;
-`,l=e.h1`
+`,g=t.h1`
   text-align: center;
   padding: 8px;
-`,g=e.h2`
+`,x=t.h2`
   text-align: center;
   padding: 8px;
-`,x=e.div`    
+`,d=t.div`    
     margin: auto;    
     max-width: 500px;
     min-height: 100vh;
   
-`;export{s as B,r as F,l as M,p as S,g as T,x as W,a as n};
+`;export{p as B,s as F,g as M,l as S,x as T,d as W,r as a,a as n};
