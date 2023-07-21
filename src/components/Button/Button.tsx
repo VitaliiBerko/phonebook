@@ -1,8 +1,9 @@
+import {ReactNode} from 'react'
 import { FC } from "react";
 import css from "./Button.module.css";
 
 interface IProps {
-  children: string;
+  children: ReactNode;
   variant: "delBtn" | "addBtn" | "logOutBtn";
   type: "button" | "submit";
   onClick?(): void;

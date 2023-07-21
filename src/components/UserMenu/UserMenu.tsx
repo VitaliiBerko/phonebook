@@ -14,7 +14,7 @@ export const UserMenu: React.FC = () => {
   const name = useAppSelector(selectName);
 
   const handlLogOut = () => {
-    dispath(logOut());    
+    dispath(logOut());
   };
 
   return (

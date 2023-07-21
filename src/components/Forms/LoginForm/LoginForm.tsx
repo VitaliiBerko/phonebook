@@ -4,8 +4,9 @@ import { logIn } from "../../../redux/auth/auth.operations";
 import Loader from "../../Loader/Loader";
 import { selectIsLoading } from "../../../redux/auth/auth.selectors";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { Form } from "../Form.styled";
+import { ButtonEyeLogin, Form, SvgEye } from "../Form.styled";
 import { Button } from "../../Button/Button";
+import icon from "../../../images/Icons/icons.sprite.svg";
 
 export const LoginForm: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -13,6 +14,7 @@ export const LoginForm: React.FC = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isPass, setIsPass] = useState(true);
 
   const emailInputId = nanoid();
   const passwordInputId = nanoid();
@@ -63,14 +65,28 @@ export const LoginForm: React.FC = () => {
       <label htmlFor={passwordInputId}>Password</label>
       <input
         id={passwordInputId}
-        //   type={isPass ? 'password' : 'text'}
-        type="password"
+        type={isPass ? "password" : "text"}
         name="password"
         title="Password must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
         value={password}
         onChange={handleChange}
       />
+      <ButtonEyeLogin
+        type="button"
+        onClick={() => (isPass ? setIsPass(false) : setIsPass(true))}
+      >
+        {isPass ? (
+          <SvgEye>
+            <use xlinkHref={`${icon}#closed-eye`}></use>
+          </SvgEye>
+        ) : (
+          <SvgEye>
+            {" "}
+            <use xlinkHref={`${icon}#opened-eye`}></use>
+          </SvgEye>
+        )}
+      </ButtonEyeLogin>
 
       <Button type="submit" variant="addBtn">
         LogIn

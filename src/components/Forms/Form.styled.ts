@@ -12,15 +12,20 @@ export const Form = styled.form`
   border-radius: 4px;
 `;
 
-export const ButtonEye = styled.button`
+export const ButtonEyeJoin = styled.button`
   position: absolute;
   top: 67%;
+  left: 90%;  
+`;
+
+export const ButtonEyeLogin = styled.button`
+  position: absolute;
+  top: 56.5%;
   left: 90%;  
 `;
 
 export const SvgEye = styled.svg`
   width: 18px;
   height: 20px;
-
   fill: grey;
 `;

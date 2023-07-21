@@ -6,7 +6,7 @@ import Loader from "../../Loader/Loader";
 import React, { useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks/hooks";
-import { ButtonEye, Form, SvgEye } from "../Form.styled";
+import {ButtonEyeJoin, Form, SvgEye } from "../Form.styled";
 import { Button } from "../../Button/Button";
 import icon from "../../../images/Icons/icons.sprite.svg";
 
@@ -102,7 +102,7 @@ export const JoinForm: React.FC = () => {
         value={password}
         onChange={handleChange}
       />
-      <ButtonEye
+      <ButtonEyeJoin
         type="button"
         onClick={() => (isPass ? setIsPass(false) : setIsPass(true))}
       >
@@ -116,7 +116,7 @@ export const JoinForm: React.FC = () => {
             <use xlinkHref={`${icon}#opened-eye`}></use>
           </SvgEye>
         )}
-      </ButtonEye>
+      </ButtonEyeJoin>
 
       <Button type="submit" variant="addBtn">
         Join
