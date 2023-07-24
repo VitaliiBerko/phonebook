@@ -8,7 +8,8 @@ interface IProps {
     children: ReactNode
 }
 
-const modalRoot = document.querySelector('#modal-root') as HTMLElement
+const modalRoot = document.getElementById("modal-root") as HTMLElement
+console.log(modalRoot);
 
 export const Modal: React.FC<IProps>=({toggleModal, children})=> {
 
@@ -34,12 +35,11 @@ export const Modal: React.FC<IProps>=({toggleModal, children})=> {
     return createPortal(
         <Overlay onClick={closeOnClick}>
             <Inner>                
-                <CloseBtn>
+                <CloseBtn onClick={toggleModal}>
                 <use xlinkHref={`${icon}#close`}/>
                 </CloseBtn>
                 {children}
             </Inner>
-
         </Overlay>,
 
         modalRoot

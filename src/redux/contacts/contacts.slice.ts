@@ -1,6 +1,6 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import { IContact } from '../../types/contatctsTypes';
-import { addContact, delateContact, fetchContacts } from './contacts.operations';
+import { addContact, deleteContact, fetchContacts } from './contacts.operations';
 import Notiflix from 'notiflix';
 
 interface IContactsState {
@@ -51,15 +51,15 @@ const contactsSlice = createSlice({
         })
 
 
-        .addCase(delateContact.pending, state =>{
+        .addCase(deleteContact.pending, state =>{
             state.isLoading = true;
         })
-        .addCase(delateContact.fulfilled, (state, {payload}: PayloadAction<IContact> )=>{
+        .addCase(deleteContact.fulfilled, (state, {payload}: PayloadAction<IContact> )=>{
                 state.isLoading =false;
                 state.error= null;
                 state.items= state.items.filter(({id})=>id!==payload.id)
         })
-        .addCase(delateContact.rejected, (state, {payload})=>{
+        .addCase(deleteContact.rejected, (state, {payload})=>{
             state.isLoading= false;
             state.error= null;
             Notiflix.Notify.failure(payload as string)

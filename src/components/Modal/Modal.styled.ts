@@ -7,7 +7,7 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
   z-index: 20;
-  background-color: transparent;
+  background-color: rgb(200, 200, 200, 0.5);
   overflow-y: auto;
 `;
 
