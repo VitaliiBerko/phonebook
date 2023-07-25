@@ -1,25 +1,21 @@
 import { useState } from "react";
-import { deleteContact } from "../../redux/contacts/contacts.operations";
-import { useAppDispatch } from "../../redux/hooks/hooks";
 import { IContact } from "../../types/contatctsTypes";
 import { Button } from "../Button/Button";
 import { Item } from "./ContactListItem.styled";
 import { Modal } from "../Modal/Modal";
-import { DeleteContact } from "../ConfirmDeleteContact/DeleteContact";
+import { ConfirmDeleteContact } from "../ConfirmDeleteContact/ConfirmDeleteContact";
 
 interface IProps {
   contact: IContact;
 }
 export const ContactListItem: React.FC<IProps> = ({ contact }) => {
-  const dispatch = useAppDispatch();
+  
   const [openModal, setOpenModal] = useState(false);
 
   const hadleClose =()=> {
     setOpenModal(false)
   }
-  const onClickDelete = (id: string) => {
-    dispatch(deleteContact(id));
-  };
+  
   const { id, name, number } = contact;
   return (
     <>
@@ -34,7 +30,7 @@ export const ContactListItem: React.FC<IProps> = ({ contact }) => {
         </Button>
       </Item>
 
-      {openModal && (<Modal toggleModal={hadleClose}><DeleteContact name={name} id={id} toggleModal={hadleClose}/></Modal>)}
+      {openModal && (<Modal toggleModal={hadleClose}><ConfirmDeleteContact name={name} id={id} toggleModal={hadleClose}/></Modal>)}
     </>
   );
 };

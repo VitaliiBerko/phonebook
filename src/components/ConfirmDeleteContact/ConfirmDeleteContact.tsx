@@ -1,6 +1,7 @@
 import { deleteContact } from "../../redux/contacts/contacts.operations";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { Button } from "../Button/Button";
+import { ListButtons } from "./ConfirmDeleteContact.styled";
 
 interface IProps {
     name: string;
@@ -8,7 +9,7 @@ interface IProps {
     toggleModal: ()=>void
 }
 
-export const DeleteContact: React.FC<IProps> = ({id, name, toggleModal}) => {
+export const ConfirmDeleteContact: React.FC<IProps> = ({id, name, toggleModal}) => {
     const dispatch = useAppDispatch();
 
     const handleDelete =()=>{
@@ -18,11 +19,11 @@ export const DeleteContact: React.FC<IProps> = ({id, name, toggleModal}) => {
 
   return (
     <>
-      <h3>Do you really want to delete contact {name}?</h3>
-      <ul>
+      <h3>Do you really want to delete contact "{name}"?</h3>
+      <ListButtons>
         <li><Button type="button" variant="delBtn" onClick={handleDelete}>Yes</Button></li>
         <li><Button type="button" variant="logOutBtn" onClick={toggleModal}>Cancel</Button></li>
-      </ul>
+      </ListButtons>
     </>
   );
 };
