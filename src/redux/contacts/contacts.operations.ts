@@ -48,3 +48,21 @@ export const deleteContact = createAsyncThunk(
     }
   }
 );
+
+export const editContact = createAsyncThunk(
+  'contacts/edit', 
+  async(contact: IContact, thunkApi)=>{
+    try {
+       const response = await privateApi.patch(`contacts/${contact.id}`, contact)
+
+       return response.data
+    } catch (error) {
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+      return thunkApi.rejectWithValue(message);
+      
+    }
+
+  }
+)

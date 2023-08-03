@@ -4,7 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { IContact } from "../../types/contatctsTypes";
 import { Button } from "../Button/Button";
 import { Form } from "./EditContact.styled";
-import { Modal } from "../Modal/Modal";
+
 
 interface IProps {
   toggleModal: () => void;
@@ -12,10 +12,11 @@ interface IProps {
 }
 
 export const EditContact = ({ toggleModal, contact }: IProps) => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [name, setName] = useState(contact.name);
+  const [number, setNumber] = useState(contact.number);
   const nameInputId = nanoid();
   const numberInputId = nanoid();
+  
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = evt.currentTarget;
@@ -33,23 +34,20 @@ export const EditContact = ({ toggleModal, contact }: IProps) => {
 
   const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
-   
+
     // const form = evt.target as HTMLFormElement;
     // const {name, number}= form.elements as typeof form.elements & {
     //   name: HTMLInputElement;
     //   number: HTMLInputElement
-    // }; 
+    // };
 
     // const contactName = name.value;
-    // const contactNumber = number.value;    
-
-    
-   
+    // const contactNumber = number.value;
+    toggleModal();
   };
 
   return (
-    <Modal toggleModal={toggleModal}>
-        <Form onSubmit={handleOnSubmit}>
+    <Form onSubmit={handleOnSubmit}>
       <label htmlFor={nameInputId}>Name:</label>
       <input
         id={nameInputId}
@@ -74,11 +72,18 @@ export const EditContact = ({ toggleModal, contact }: IProps) => {
         onChange={handleChange}
       />
 
-      <Button type="submit" variant="addBtn">
-        Add contact
-      </Button>
+      <ul>
+        <li>
+          <Button type="submit" variant="addBtn">
+            Add
+          </Button>
+        </li>
+        <li>
+          <Button type="button" variant="logOutBtn" onClick={toggleModal}>
+            Cancel
+          </Button>
+        </li>
+      </ul>
     </Form>
-    </Modal>
-    
   );
 };

@@ -4,33 +4,55 @@ import { Button } from "../Button/Button";
 import { Item } from "./ContactListItem.styled";
 import { Modal } from "../Modal/Modal";
 import { ConfirmDeleteContact } from "../ConfirmDeleteContact/ConfirmDeleteContact";
+import { EditContact } from "../EditContact.tsx/EditContact";
 
 interface IProps {
   contact: IContact;
 }
 export const ContactListItem: React.FC<IProps> = ({ contact }) => {
-  
   const [openModal, setOpenModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
 
-  const hadleClose =()=> {
-    setOpenModal(false)
+  const hadleClose = () => {
+    setOpenModal(false);
+  };
+  const hadleEditClose =()=>{
+    setOpenEditModal(false)
   }
-  
+
   const { id, name, number } = contact;
   return (
     <>
       <Item>
         {name} : {number}
-        <Button
-          variant="delBtn"
+        <ul>
+          <li>
+            <Button
+              variant="delBtn"
+              type="button"
+              onClick={() => setOpenModal(true)}
+            >
+              Delete
+            </Button>
+          </li>
+          <li><Button
+          variant="addBtn"
           type="button"
-          onClick={() => setOpenModal(true)}
+          onClick={() => setOpenEditModal(true)}
         >
-          Delete
-        </Button>
+          Edit
+        </Button></li>
+        </ul>
       </Item>
 
-      {openModal && (<Modal toggleModal={hadleClose}><ConfirmDeleteContact name={name} id={id} toggleModal={hadleClose}/></Modal>)}
+      {openModal && (
+        <Modal toggleModal={hadleClose}>
+          <ConfirmDeleteContact name={name} id={id} toggleModal={hadleClose} />
+        </Modal>
+      )}
+      {openEditModal && (
+        <Modal toggleModal={hadleEditClose}><EditContact contact={contact} toggleModal={hadleEditClose}/></Modal>
+      )}
     </>
   );
 };

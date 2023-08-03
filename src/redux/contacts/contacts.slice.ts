@@ -64,6 +64,8 @@ const contactsSlice = createSlice({
             state.error= null;
             Notiflix.Notify.failure(payload as string)
         })
+
+        
     }
 
 })
