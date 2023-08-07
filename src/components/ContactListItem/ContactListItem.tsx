@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IContact } from "../../types/contatctsTypes";
 import { Button } from "../Button/Button";
-import { Item } from "./ContactListItem.styled";
+import { Item, ListButtonStyled } from "./ContactListItem.styled";
 import { Modal } from "../Modal/Modal";
 import { ConfirmDeleteContact } from "../ConfirmDeleteContact/ConfirmDeleteContact";
 import { EditContact } from "../EditContact.tsx/EditContact";
@@ -16,16 +16,16 @@ export const ContactListItem: React.FC<IProps> = ({ contact }) => {
   const hadleClose = () => {
     setOpenModal(false);
   };
-  const hadleEditClose =()=>{
-    setOpenEditModal(false)
-  }
+  const hadleEditClose = () => {
+    setOpenEditModal(false);
+  };
 
   const { id, name, number } = contact;
   return (
     <>
       <Item>
         {name} : {number}
-        <ul>
+        <ListButtonStyled>
           <li>
             <Button
               variant="delBtn"
@@ -35,14 +35,16 @@ export const ContactListItem: React.FC<IProps> = ({ contact }) => {
               Delete
             </Button>
           </li>
-          <li><Button
-          variant="addBtn"
-          type="button"
-          onClick={() => setOpenEditModal(true)}
-        >
-          Edit
-        </Button></li>
-        </ul>
+          <li>
+            <Button
+              variant="addBtn"
+              type="button"
+              onClick={() => setOpenEditModal(true)}
+            >
+              Edit
+            </Button>
+          </li>
+        </ListButtonStyled>
       </Item>
 
       {openModal && (
@@ -51,7 +53,9 @@ export const ContactListItem: React.FC<IProps> = ({ contact }) => {
         </Modal>
       )}
       {openEditModal && (
-        <Modal toggleModal={hadleEditClose}><EditContact contact={contact} toggleModal={hadleEditClose}/></Modal>
+        <Modal toggleModal={hadleEditClose}>
+          <EditContact contact={contact} toggleModal={hadleEditClose} />
+        </Modal>
       )}
     </>
   );

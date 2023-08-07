@@ -2,7 +2,7 @@
   appearance: none;
   backface-visibility: hidden;
   background-color: #2f80ed;
-  border-radius: 10px;
+  border-radius: 8px;
   border-style: none;
   box-shadow: none;
   box-sizing: border-box;
@@ -17,7 +17,7 @@
   line-height: 1.5;
   outline: none;
   overflow: hidden;
-  padding: 14px 30px;
+  padding: 8px 16px;
   position: relative;
   text-align: center;
   text-decoration: none;
