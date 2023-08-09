@@ -56,7 +56,7 @@ export const ContactForm: React.FC = () => {
     const contactNumber = number.value;
 
     if (contacts.find((contact) => contact.name === contactName)) {
-      Notiflix.Notify.info(`${name.value} is already in contacts`);
+      Notiflix.Notify.warning(`${name.value} is already in contacts`);
       setName("");
       return;
     } else { resetForm();

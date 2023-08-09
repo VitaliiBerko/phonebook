@@ -11,3 +11,10 @@ export const Form = styled.form`
   border: 2px solid black;
   border-radius: 4px;
 `;
+
+
+export const ListButtonStyled = styled.ul`
+display: flex;
+justify-content: space-around;
+align-items: center;
+`

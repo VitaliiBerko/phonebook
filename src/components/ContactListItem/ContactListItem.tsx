@@ -37,7 +37,7 @@ export const ContactListItem: React.FC<IProps> = ({ contact }) => {
           </li>
           <li>
             <Button
-              variant="addBtn"
+              variant="logOutBtn"
               type="button"
               onClick={() => setOpenEditModal(true)}
             >

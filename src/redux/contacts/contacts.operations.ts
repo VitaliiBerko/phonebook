@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { privateApi } from "../../http/http";
-import { IContact } from "../../types/contatctsTypes";
+import { IContact, IEditContact } from "../../types/contatctsTypes";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchAll",
@@ -51,9 +51,9 @@ export const deleteContact = createAsyncThunk(
 
 export const editContact = createAsyncThunk(
   'contacts/edit', 
-  async(contact: IContact, thunkApi)=>{
+  async(contact: IEditContact, thunkApi)=>{
     try {
-       const response = await privateApi.patch(`contacts/${contact.id}`, contact)
+       const response = await privateApi.patch(`contacts/${contact.id}`, contact.item)
 
        return response.data
     } catch (error) {

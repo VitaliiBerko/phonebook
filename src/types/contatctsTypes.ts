@@ -4,4 +4,8 @@ export interface IContact  {
     number: string;
 }
 
+export interface IEditContact {
+    id: string;
+    item: Pick<IContact, 'name' | 'number' >
+}
 

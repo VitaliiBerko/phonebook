@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 
-import { IContact } from "../../types/contatctsTypes";
+import { IContact, IEditContact } from "../../types/contatctsTypes";
 import { Button } from "../Button/Button";
-import { Form } from "./EditContact.styled";
+import { Form, ListButtonStyled } from "./EditContact.styled";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { editContact } from "../../redux/contacts/contacts.operations";
+import Notiflix from "notiflix";
+import { selectContacts } from "../../redux/contacts/contacts.selectors";
 
 
 interface IProps {
@@ -14,8 +18,11 @@ interface IProps {
 export const EditContact = ({ toggleModal, contact }: IProps) => {
   const [name, setName] = useState(contact.name);
   const [number, setNumber] = useState(contact.number);
+  const [id]= useState(contact.id)
   const nameInputId = nanoid();
   const numberInputId = nanoid();
+  const dispatch = useAppDispatch()
+  const contacts = useAppSelector(selectContacts)
   
 
   const handleChange = (evt: React.ChangeEvent<HTMLInputElement>): void => {
@@ -35,14 +42,18 @@ export const EditContact = ({ toggleModal, contact }: IProps) => {
   const handleOnSubmit = (evt: React.FormEvent<HTMLFormElement>): void => {
     evt.preventDefault();
 
-    // const form = evt.target as HTMLFormElement;
-    // const {name, number}= form.elements as typeof form.elements & {
-    //   name: HTMLInputElement;
-    //   number: HTMLInputElement
-    // };
+    const contact: IEditContact = {
+      id: id,
+      item: {name: name, number: number }
+    }
 
-    // const contactName = name.value;
-    // const contactNumber = number.value;
+    if (contacts.find((contact) => contact.name === name)) {
+      Notiflix.Notify.warning(`${name} is already in contacts`);      
+      return;
+    } else { 
+      dispatch(editContact(contact))
+    }  
+    
     toggleModal();
   };
 
@@ -72,10 +83,10 @@ export const EditContact = ({ toggleModal, contact }: IProps) => {
         onChange={handleChange}
       />
 
-      <ul>
+      <ListButtonStyled>
         <li>
           <Button type="submit" variant="addBtn">
-            Add
+            Done
           </Button>
         </li>
         <li>
@@ -83,7 +94,7 @@ export const EditContact = ({ toggleModal, contact }: IProps) => {
             Cancel
           </Button>
         </li>
-      </ul>
+      </ListButtonStyled>
     </Form>
   );
 };
