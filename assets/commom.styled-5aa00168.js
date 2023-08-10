@@ -1,4 +1,4 @@
-import{s as t}from"./index-ac797db2.js";let s=(n=21)=>crypto.getRandomValues(new Uint8Array(n)).reduce((e,o)=>(o&=63,o<36?e+=o.toString(36):o<62?e+=(o-26).toString(36).toUpperCase():o>62?e+="-":e+="_",e),"");const a=t.form`
+import{s as t}from"./index-2408311a.js";let s=(n=21)=>crypto.getRandomValues(new Uint8Array(n)).reduce((e,o)=>(o&=63,o<36?e+=o.toString(36):o<62?e+=(o-26).toString(36).toUpperCase():o>62?e+="-":e+="_",e),"");const a=t.form`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -10,11 +10,11 @@ import{s as t}from"./index-ac797db2.js";let s=(n=21)=>crypto.getRandomValues(new
   border-radius: 4px;
 `,p=t.button`
   position: absolute;
-  top: 67%;
+  top: 69%;
   left: 90%;  
 `,r=t.button`
   position: absolute;
-  top: 56.5%;
+  top: 59%;
   left: 90%;  
 `,l=t.svg`
   width: 18px;
