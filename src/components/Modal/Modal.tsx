@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const modalRoot = document.getElementById("modal-root") as HTMLElement
-console.log(modalRoot);
+
 
 export const Modal: React.FC<IProps>=({toggleModal, children})=> {
 

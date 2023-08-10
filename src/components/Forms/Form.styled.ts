@@ -14,13 +14,13 @@ export const Form = styled.form`
 
 export const ButtonEyeJoin = styled.button`
   position: absolute;
-  top: 67%;
+  top: 69%;
   left: 90%;  
 `;
 
 export const ButtonEyeLogin = styled.button`
   position: absolute;
-  top: 56.5%;
+  top: 59%;
   left: 90%;  
 `;
 

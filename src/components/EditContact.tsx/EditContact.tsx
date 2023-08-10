@@ -47,7 +47,7 @@ export const EditContact = ({ toggleModal, contact }: IProps) => {
       item: {name: name, number: number }
     }
 
-    if (contacts.find((contact) => contact.name === name)) {
+    if (contacts.find((contact) => contact.name.toLowerCase() === name.toLowerCase())) {
       Notiflix.Notify.warning(`${name} is already in contacts`);      
       return;
     } else { 

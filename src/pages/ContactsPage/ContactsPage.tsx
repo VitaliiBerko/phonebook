@@ -31,6 +31,8 @@ const ContactsPage: FC = () => {
   const filteredContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(filter)
   );
+  
+  const sortedFilteredContacts = [...filteredContacts].sort((a, b)=>a.name.localeCompare(b.name))
 
   return (
     <WrapperPage>
@@ -39,7 +41,7 @@ const ContactsPage: FC = () => {
       <ContactForm />
       <Title className="title">Contacts</Title>
       <Filter value={filter} onChangeFilter={handleFilterChange} />
-      {!!contacts && <ContactList contacts={filteredContacts} />}
+      {!!contacts && <ContactList contacts={sortedFilteredContacts} />}
     </WrapperPage>
   );
 };
